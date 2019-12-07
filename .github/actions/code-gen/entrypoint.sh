@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-export JAR_PATH=./openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar
+export JAR_PATH=./openapi-generator/code-gen/openapi-generator-cli.jar
 
 # Swagger validation
 java -jar ${JAR_PATH} validate -i swagger.yaml
@@ -32,6 +32,7 @@ java -jar ${JAR_PATH} generate -i swagger.yaml -g typescript-axios -o typescript
 
 git config --global user.name u-nation
 git config --global user.email Endooooooo7@gmail.com
+git remote set-url origin https://u-nation:${GITHUB_TOKEN}@github.com/u-nation/sample-openapi.git
 
 export GIT_BRANCH="$(git symbolic-ref HEAD --short 2>/dev/null)"
 if [ "$GIT_BRANCH" = "" ] ; then
@@ -39,7 +40,6 @@ if [ "$GIT_BRANCH" = "" ] ; then
   export GIT_BRANCH=${GIT_BRANCH#remotes/origin/};
 fi
 
-git remote set-url origin https://u-nation:${GITHUB_TOKEN}@github.com/u-nation/sample-openapi.git
 git checkout $GIT_BRANCH
 git branch -a
 git add .
