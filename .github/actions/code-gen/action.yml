@@ -1,0 +1,8 @@
+name: "code_gen"
+description: "SwaggerからOpenAPIGeneratorを用いてコード自動生成"
+branding:
+  icon: "gift"
+  color: "green"
+runs:
+  using: "docker"
+  image: "Dockerfile"
